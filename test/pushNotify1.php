@@ -1,21 +1,48 @@
 <?php
 
+//this api access for the firebase server to send notification.
 define('API_ACCESS_KEY', 'AAAAysijQG4:APA91bEVna5UC6cvLu8zFogm5m2F0GMCgK7LQhyaUpPuS840I6nCKIeytCtlvssjB6Vhsahc1cVZBnhtR73ZYD0lsa8urcdoqwc8ssXmwY-hJdFZgkV9UYIjGgxPL9yACi7FWBP0LOTk');
 
-send_notification(nl2br("body"), "name"
-        , "cA2UX7eghZc:APA91bHFj3hXLPGoq9vifaS9_09OeQmfcC7q5rykqZRjteJs3XP6JUNrJFQQNj0Wx5OhYZ_h8ehV36DhBaeBvW0vTM3Ndu62NBH4O52tcOZhQHPdbXW_5FUr9Kcg8zL79njkRl2nOjKR");
+// Create connection
+$con = new mysqli('localhost', 'root', '', 'eventsnotify');
+mysqli_query($con, "SET NAMES 'utf8'");
+mysqli_query($con, 'SET CHARACTER SET utf8');
 
-function send_notification($notificaiton_body, $event, $token) {
+// Check connection
+if ($con->connect_error) {
+    die("Connection failed: " . $con->connect_error);
+} else {
+    echo 'yes<br>';
+}
+
+$st = $con->prepare("SELECT notify_user_token FROM `notify_user`");
+$st->execute();
+$rs = $st->get_result();
+while ($row = $rs->fetch_assoc()) {
+    send_notification("اجتماع لجنة العمل", $row['notify_user_token']);
+    echo $row['notify_user_token'];
+}
+
+function send_notification($subject, $token) {
+
+    //   $registrationIds = ;
 #prep the bundle
     $msg = array
         (
-        'body' => $notificaiton_body,
-        'title' => $event,
+        'bodymsg' => 'body msg',
+        'titlemsg' => 'title msg',
     );
+
+    $data = array(
+        'body' => $subject,
+        'title' => 'اجتماع لجنة',
+    );
+
     $fields = array
         (
         'to' => $token,
-        'notification' => $msg
+        'notification' => $msg,
+        'data' => $data
     );
 
     $headers = array
