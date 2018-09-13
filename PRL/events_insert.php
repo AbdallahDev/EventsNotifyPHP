@@ -72,7 +72,7 @@ if (isset($_POST['committee']) && !empty(trim($_POST['committee']))) {
     //to store 4 in the entity event id
     elseif ($_SESSION['directorate'] == 4) {
         //here i make the event entity to 4, because the name typed in the textbox
-        $event_entity = 4; 
+        $event_entity = 4;
     }
 }
 
@@ -113,13 +113,20 @@ function send_notification($notificaiton_body, $event, $token) {
 #prep the bundle
     $msg = array
         (
+        'bodymsg' => 'body msg',
+        'titlemsg' => 'title msg',
+    );
+
+    $data = array(
         'body' => $notificaiton_body,
         'title' => $event,
     );
+
     $fields = array
         (
         'to' => $token,
-        'notification' => $msg
+        'notification' => $msg,
+        'data' => $data
     );
 
     $headers = array
