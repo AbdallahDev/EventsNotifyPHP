@@ -4,7 +4,10 @@
 define('API_ACCESS_KEY', 'AAAAysijQG4:APA91bEVna5UC6cvLu8zFogm5m2F0GMCgK7LQhyaUpPuS840I6nCKIeytCtlvssjB6Vhsahc1cVZBnhtR73ZYD0lsa8urcdoqwc8ssXmwY-hJdFZgkV9UYIjGgxPL9yACi7FWBP0LOTk');
 
 // Create connection
+//this connectin for the local computer server, just uncommit it when needed.
 $con = new mysqli('localhost', 'root', '', 'eventsnotify');
+//this connectin for the server, just uncommit it when needed.
+//$con = new mysqli('localhost', 'root', 'Y9ts3G2CPSqkgZTB', 'eventsnotify');
 mysqli_query($con, "SET NAMES 'utf8'");
 mysqli_query($con, 'SET CHARACTER SET utf8');
 
