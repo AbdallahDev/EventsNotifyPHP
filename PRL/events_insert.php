@@ -76,6 +76,7 @@ if (isset($_POST['committee']) && !empty(trim($_POST['committee']))) {
     }
 }
 
+//this inclusion for the events notificatin file, to send events using firebase
 include_once '../android/eventNotification.php';
 
 //bellow is the code related to store the event in the db.
