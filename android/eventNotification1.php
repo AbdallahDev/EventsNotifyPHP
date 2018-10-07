@@ -24,10 +24,11 @@ $rs_notify_user = $notify_user->get_all_users_token();
 while ($row_notify_user = $rs_notify_user->fetch_assoc()) {
     //this variable to store all the needed information for the notification
     //like the event title, subject, date and time.
-    $notificaiton_body = "<b>الموضوع:</b> " . $_POST['subject'] . "<br>"
-            . "<br>"
-            . "<b>التاريخ:</b> " . $_POST['event_date'] . "<br>"
-            . "<b>الوقت:</b> " . $event_time;
+    $notification_title = $committee_name;
+    $notification_subject = $_POST['subject'];
+    $notification_date = $_POST['event_date'];
+    $notification_time = $event_time;
+    
     send_notification(nl2br($notificaiton_body), $committee_name
             , $row_notify_user['notify_user_token']);
 }
