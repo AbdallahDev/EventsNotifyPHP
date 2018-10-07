@@ -23,7 +23,7 @@ $notify_user = new notify_user();
 $rs_notify_user = $notify_user->get_all_users_token();
 while ($row_notify_user = $rs_notify_user->fetch_assoc()) {
     //this variable to store all the needed information for the notification
-    //like the event subject and date and time.
+    //like the event title, subject, date and time.
     $notificaiton_body = "<b>الموضوع:</b> " . $_POST['subject'] . "<br>"
             . "<br>"
             . "<b>التاريخ:</b> " . $_POST['event_date'] . "<br>"
