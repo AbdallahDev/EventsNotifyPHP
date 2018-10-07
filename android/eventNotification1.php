@@ -12,7 +12,7 @@ $rs_committee = $committee->committee_get($_POST['committee']);
 $row_committee = $rs_committee->fetch_assoc();
 $committee_name = $row_committee['committee_name'];
 
-//this api for the firebase server, this api has been taken from the firebase
+//this api key for the firebase server, this api key has been taken from the firebase
 //console to send push notification
 //$registrationIds = ;
 define('API_ACCESS_KEY', 'AAAAysijQG4:APA91bEVna5UC6cvLu8zFogm5m2F0GMCgK7LQhyaUpPuS840I6nCKIeytCtlvssjB6Vhsahc1cVZBnhtR73ZYD0lsa8urcdoqwc8ssXmwY-hJdFZgkV9UYIjGgxPL9yACi7FWBP0LOTk');
