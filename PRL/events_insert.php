@@ -81,6 +81,9 @@ include_once '../android/eventNotification.php';
 
 //bellow is the code related to store the event in the db.
 $event1 = new events();
-$event1->insert_event($event_entity, $event_entity_name, $event_time, $event_appointment, $hall_id, $event_place, nl2br($_POST['subject']), $_POST['event_date'], $event_status, $_SESSION['directorate'], $_SESSION['user_id']);
+$event1->insert_event($event_entity, $event_entity_name, $event_time
+        , $event_appointment, $hall_id, $event_place, nl2br($_POST['subject'])
+        , $_POST['event_date'], $event_status, $_SESSION['directorate']
+        , $_SESSION['user_id']);
 
 header('location: events_preview_current_future.php');
