@@ -15,7 +15,8 @@ $committee_name = $row_committee['committee_name'];
 //this api key for the firebase server, this api key has been taken from the firebase
 //console to send push notification
 //$registrationIds = ;
-define('API_ACCESS_KEY', 'AAAAysijQG4:APA91bEVna5UC6cvLu8zFogm5m2F0GMCgK7LQhyaUpPuS840I6nCKIeytCtlvssjB6Vhsahc1cVZBnhtR73ZYD0lsa8urcdoqwc8ssXmwY-hJdFZgkV9UYIjGgxPL9yACi7FWBP0LOTk');
+define('API_ACCESS_KEY'
+        , 'AAAAysijQG4:APA91bEVna5UC6cvLu8zFogm5m2F0GMCgK7LQhyaUpPuS840I6nCKIeytCtlvssjB6Vhsahc1cVZBnhtR73ZYD0lsa8urcdoqwc8ssXmwY-hJdFZgkV9UYIjGgxPL9yACi7FWBP0LOTk');
 
 //bellow i'll select all the users tokens in the db to send them notifications
 include_once '../BLL/notify_users.php';
