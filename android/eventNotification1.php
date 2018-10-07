@@ -36,23 +36,21 @@ while ($row_notify_user = $rs_notify_user->fetch_assoc()) {
 }
 
 //this function to send the push notification
-function send_notification($notificaiton_body, $event, $token) {
+function send_notification($notification_title, $notification_subject
+, $notification_date, $notification_time, $user_token) {
 #prep the bundle
-    $msg = array
-        (
-        'bodymsg' => 'body msg',
-        'titlemsg' => 'title msg',
-    );
-
+    //this data represents the data that will be sent to user when the firebase
+    //notification sent
     $data = array(
-        'body' => $notificaiton_body,
-        'title' => $event,
+        'title' => $notification_title,
+        'subject' => $notification_subject,
+        'date' => $notification_date,
+        'time' => $notification_time
     );
 
     $fields = array
         (
-        'to' => $token,
-        'notification' => $msg,
+        'to' => $user_token,
         'data' => $data
     );
 
