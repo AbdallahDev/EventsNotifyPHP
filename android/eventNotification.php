@@ -18,39 +18,39 @@ $committee_name = $row_committee['committee_name'];
 define('API_ACCESS_KEY'
         , 'AAAAysijQG4:APA91bEVna5UC6cvLu8zFogm5m2F0GMCgK7LQhyaUpPuS840I6nCKIeytCtlvssjB6Vhsahc1cVZBnhtR73ZYD0lsa8urcdoqwc8ssXmwY-hJdFZgkV9UYIjGgxPL9yACi7FWBP0LOTk');
 
-//bellow i'll select the all the users tokens in the db to send them notifications
+//bellow i'll select all the users tokens in the db to send them notifications
 include_once '../BLL/notify_users.php';
 $notify_user = new notify_user();
 $rs_notify_user = $notify_user->get_all_users_token();
 while ($row_notify_user = $rs_notify_user->fetch_assoc()) {
     //this variable to store all the needed information for the notification
-    //like the event subject and date and time.
-    $notificaiton_body = "<b>الموضوع:</b> " . $_POST['subject'] . "<br>"
-            . "<br>"
-            . "<b>التاريخ:</b> " . $_POST['event_date'] . "<br>"
-            . "<b>الوقت:</b> " . $event_time;
-    send_notification(nl2br($notificaiton_body), $committee_name
+    //like the event title, subject, date and time.
+    $notification_title = $committee_name;
+    $notification_subject = $_POST['subject'];
+    $notification_date = $_POST['event_date'];
+    $notification_time = $event_time;
+
+    send_notification($notification_title, $notification_subject
+            , $notification_date, $notification_time
             , $row_notify_user['notify_user_token']);
 }
 
 //this function to send the push notification
-function send_notification($notificaiton_body, $event, $token) {
+function send_notification($notification_title, $notification_subject
+, $notification_date, $notification_time, $user_token) {
 #prep the bundle
-    $msg = array
-        (
-        'bodymsg' => 'body msg',
-        'titlemsg' => 'title msg',
-    );
-
+    //this data represents the data that will be sent to user when the firebase
+    //notification sent
     $data = array(
-        'body' => $notificaiton_body,
-        'title' => $event,
+        'title' => $notification_title,
+        'subject' => $notification_subject,
+        'date' => $notification_date,
+        'time' => $notification_time
     );
 
     $fields = array
         (
-        'to' => $token,
-        'notification' => $msg,
+        'to' => $user_token,
         'data' => $data
     );
 
