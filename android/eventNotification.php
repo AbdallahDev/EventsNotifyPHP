@@ -28,6 +28,7 @@ while ($row_notify_user = $rs_notify_user->fetch_assoc()) {
     $notification_title = $committee_name;
     $notification_subject = $_POST['subject'];
     $notification_date = $_POST['event_date'];
+    //this variable event time declared in the events_insert.php file
     $notification_time = $event_time;
 
     send_notification($notification_title, $notification_subject
