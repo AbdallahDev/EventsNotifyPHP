@@ -30,10 +30,10 @@ while ($row_notify_user = $rs_notify_user->fetch_assoc()) {
     $notification_date = $_POST['event_date'];
     //this variable event time declared in the events_insert.php file
     $notification_time = $event_time;
+    $user_token = $row_notify_user['notify_user_token'];
 
     send_notification($notification_title, $notification_subject
-            , $notification_date, $notification_time
-            , $row_notify_user['notify_user_token']);
+            , $notification_date, $notification_time, $user_token);
 }
 
 //this function to send the push notification
