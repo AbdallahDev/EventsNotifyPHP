@@ -4,7 +4,7 @@
 define('API_ACCESS_KEY', 'AAAAysijQG4:APA91bEVna5UC6cvLu8zFogm5m2F0GMCgK7LQhyaUpPuS840I6nCKIeytCtlvssjB6Vhsahc1cVZBnhtR73ZYD0lsa8urcdoqwc8ssXmwY-hJdFZgkV9UYIjGgxPL9yACi7FWBP0LOTk');
 
 // Create connection
-$con = new mysqli('localhost', 'root', '', 'eventsnotify');
+$con = new mysqli('localhost', 'eventsNotify', '2tpCMHfF6IMQVCjM', 'eventsnotify');
 mysqli_query($con, "SET NAMES 'utf8'");
 mysqli_query($con, 'SET CHARACTER SET utf8');
 
@@ -15,13 +15,8 @@ if ($con->connect_error) {
     echo 'yes<br>';
 }
 
-$st = $con->prepare("SELECT notify_user_token FROM `notify_user`");
-$st->execute();
-$rs = $st->get_result();
-while ($row = $rs->fetch_assoc()) {
-    send_notification("اجتماع لجنة العمل", $row['notify_user_token']);
-    echo $row['notify_user_token'];
-}
+$token = 
+send_notification("اجتماع لجنة", $token);
 
 function send_notification($subject, $token) {
 
