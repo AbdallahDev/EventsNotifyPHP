@@ -43,7 +43,7 @@ function send_notification($notification_title, $notification_subject
     //notification sent
     $data = array(
         'title' => $notification_title,
-        'subject' => $notification_subject,
+        'body' => $notification_subject,
         'date' => $notification_date,
         'time' => $notification_time
     );
