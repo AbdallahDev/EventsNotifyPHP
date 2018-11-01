@@ -18,11 +18,11 @@ $committee_name = $row_committee['committee_name'];
 define('API_ACCESS_KEY'
         , 'AAAAysijQG4:APA91bEVna5UC6cvLu8zFogm5m2F0GMCgK7LQhyaUpPuS840I6nCKIeytCtlvssjB6Vhsahc1cVZBnhtR73ZYD0lsa8urcdoqwc8ssXmwY-hJdFZgkV9UYIjGgxPL9yACi7FWBP0LOTk');
 
-//bellow i'll select all the users tokens in the db to send them notifications
-include_once '../BLL/notify_users.php';
-$notify_user = new notify_user();
-$rs_notify_user = $notify_user->get_all_users_token();
-while ($row_notify_user = $rs_notify_user->fetch_assoc()) {
+//bellow i'll select all the device tokens in the db to send them notifications
+include_once '../BLL/android/device_token.php';
+$device_token = new device_token();
+$rs_device_token = $device_token->get_all_device_token();
+while ($row_device_token = $rs_device_token->fetch_assoc()) {
     //this variable to store all the needed information for the notification
     //like the event title, subject, date and time.
     $notification_title = $committee_name;
@@ -30,15 +30,15 @@ while ($row_notify_user = $rs_notify_user->fetch_assoc()) {
     $notification_date = $_POST['event_date'];
     //this variable event time declared in the events_insert.php file
     $notification_time = $event_time;
-    $user_token = $row_notify_user['notify_user_token'];
+    $device_token = $row_device_token['device_token'];
 
     send_notification($notification_title, $notification_subject
-            , $notification_date, $notification_time, $user_token);
+            , $notification_date, $notification_time, $device_token);
 }
 
 //this function to send the push notification
 function send_notification($notification_title, $notification_subject
-, $notification_date, $notification_time, $user_token) {
+, $notification_date, $notification_time, $device_token) {
     //this data represents the data that will be sent to user when the firebase
     //notification sent
     $data = array(
@@ -50,7 +50,7 @@ function send_notification($notification_title, $notification_subject
 
     $fields = array
         (
-        'to' => $user_token,
+        'to' => $device_token,
         'data' => $data
     );
 
