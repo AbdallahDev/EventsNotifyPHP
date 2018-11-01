@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 05, 2018 at 11:18 AM
+-- Generation Time: Nov 01, 2018 at 02:16 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -97,6 +97,24 @@ INSERT INTO `committees` (`committee_id`, `committee_name`, `directorate_id`) VA
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `device_token`
+--
+
+CREATE TABLE `device_token` (
+  `device_token_id` int(11) NOT NULL,
+  `device_token` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `device_token`
+--
+
+INSERT INTO `device_token` (`device_token_id`, `device_token`) VALUES
+(57, 'cA_QEcZ9NK8:APA91bGK4uZEmKJWNTFGjTPcTN-HmpnewAi-yVulVbeyOqhF8gpEhxFspPiXrdPH6hQ0d1FfQ3b8BvJZ76rFKNv5WTdiRI7qSo4brjPLagmB8Wk4ZMGF4TTAbNcapbqP1eDgAJKwgrC1');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `events`
 --
 
@@ -123,14 +141,10 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`id`, `committee_id`, `event_entity_name`, `time`, `event_appointment`, `subject`, `event_date`, `hall_id`, `event_place`, `event_insertion_date`, `user_id_insert`, `event_edit_date`, `user_id_edit`, `directorate_id`, `event_status`) VALUES
-(312, 44, '', '13:17:00', '', 'لجنة الريف 1', '2018-08-05', 0, '', '2018-08-05 13:17:24', 30566, '0000-00-00 00:00:00', -1, 2, 0),
-(313, 17, '', '13:17:00', '', 'لجنة الاقتصاد 1', '2018-08-07', 0, '', '2018-08-05 13:18:04', 30566, '0000-00-00 00:00:00', -1, 2, 0),
-(316, 16, '', '13:02:00', '', 'لجنة الشباب 1', '2018-08-10', 0, '', '2018-08-06 13:02:37', 30566, '0000-00-00 00:00:00', -1, 2, 0),
-(317, 16, '', '13:03:00', '', 'لجنة الشباب 2', '2018-08-10', 0, '', '2018-08-08 08:55:34', 30566, '0000-00-00 00:00:00', -1, 2, 0),
-(318, 17, '', '13:18:00', '', 'لجنة الاقتصاد والاستثمار', '2018-08-07', 0, '', '2018-08-08 12:51:17', 30566, '0000-00-00 00:00:00', -1, 2, 0),
-(319, 16, '', '13:02:00', '', '', '2018-08-08', 0, '', '2018-08-08 13:02:47', 30566, '0000-00-00 00:00:00', -1, 2, 0),
-(320, 16, '', '13:05:00', '', '', '2018-08-10', 0, '', '2018-08-08 13:05:57', 30566, '0000-00-00 00:00:00', -1, 2, 0),
-(321, 44, '', '13:18:00', '', '', '2018-08-05', 0, '', '2018-08-08 13:17:02', 30566, '0000-00-00 00:00:00', -1, 2, 0);
+(365, 16, '', '13:38:00', '', 'fcm data', '2018-10-07', 0, '', '2018-10-07 13:39:06', 30566, '0000-00-00 00:00:00', -1, 2, 0),
+(367, 17, '', '13:45:00', '', 'fcm data 1', '2018-10-07', 0, '', '2018-10-07 13:45:27', 30566, '0000-00-00 00:00:00', -1, 2, 0),
+(368, 16, '', '13:46:00', '', 'fcm data 2', '2018-10-07', 0, '', '2018-10-07 13:46:36', 30566, '0000-00-00 00:00:00', -1, 2, 0),
+(369, 44, '', '13:51:00', '', 'fcm data 3', '2018-10-07', 0, '', '2018-10-07 13:52:11', 30566, '0000-00-00 00:00:00', -1, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -157,24 +171,6 @@ INSERT INTO `halls` (`hall_id`, `hall_name`) VALUES
 (8, 'قاعة عاكف الفايز الطابق الاول'),
 (9, 'قاعة التشريفات الطابق الثاني'),
 (10, 'قاعة عبدالحليم النمر الطابق الاول');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `notify_user`
---
-
-CREATE TABLE `notify_user` (
-  `notify_user_id` int(11) NOT NULL,
-  `notify_user_token` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `notify_user`
---
-
-INSERT INTO `notify_user` (`notify_user_id`, `notify_user_token`) VALUES
-(8, 'cqtE3VRqLpM:APA91bE9b1YDX2ehOyXxnoGvA2jhFQL9lNDjhUSMF1RELp5Js-adF28DjTFz-4OGgFVgxFriklveU_4HdisUC2cJKLM1HRxlfDvBhX55E7-JtH2SIcUWIftJvgzpvecXeJ4_JcLx7Osg3ktwAUOXf-0qmY_UtchdHA');
 
 -- --------------------------------------------------------
 
@@ -331,7 +327,7 @@ INSERT INTO `users` (`user_id`, `password`, `user_type`, `name`, `directorate`, 
 (41, '356a192b7913b04c54574d18c28d46e6395428ab', 2, 'نادر', 4, 0),
 (351, '17ba0791499db908433b80f37c5fbc89b870084b', 2, 'فلان 1', 3, 0),
 (30563, '15afd7262ebd18f6f7c1401f13249c2afd747402', 2, 'عبدالعزيز السرور', 2, 1),
-(30566, '45005e5be35a4051ed56c72d03679e256508009f', 2, 'عبدالله', 2, 1),
+(30566, '0e0b24449467e2b9b0875c4462ca1c2f23868de2', 2, 'عبدالله', 2, 1),
 (30629, '356a192b7913b04c54574d18c28d46e6395428ab', 2, 'محمد أبو جودة', 2, 1);
 
 -- --------------------------------------------------------
@@ -457,6 +453,12 @@ ALTER TABLE `committees`
   ADD PRIMARY KEY (`committee_id`);
 
 --
+-- Indexes for table `device_token`
+--
+ALTER TABLE `device_token`
+  ADD PRIMARY KEY (`device_token_id`);
+
+--
 -- Indexes for table `events`
 --
 ALTER TABLE `events`
@@ -467,12 +469,6 @@ ALTER TABLE `events`
 --
 ALTER TABLE `halls`
   ADD PRIMARY KEY (`hall_id`);
-
---
--- Indexes for table `notify_user`
---
-ALTER TABLE `notify_user`
-  ADD PRIMARY KEY (`notify_user_id`);
 
 --
 -- Indexes for table `pages`
@@ -533,22 +529,22 @@ ALTER TABLE `committees`
   MODIFY `committee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
+-- AUTO_INCREMENT for table `device_token`
+--
+ALTER TABLE `device_token`
+  MODIFY `device_token_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+
+--
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=322;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=370;
 
 --
 -- AUTO_INCREMENT for table `halls`
 --
 ALTER TABLE `halls`
   MODIFY `hall_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `notify_user`
---
-ALTER TABLE `notify_user`
-  MODIFY `notify_user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `pages`
