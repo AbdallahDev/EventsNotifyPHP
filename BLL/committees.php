@@ -16,15 +16,8 @@ class committees extends my_db {
     }
 
     //this function get all the committees for specific directorate
-    public function committees_all_get($directorate_id1, $directorate_id2) {
-        //here i get the directorate id twice to get all the committees belong 
-        //to the same direcotrate, and to exclude the empty committee that 
-        //belong to the same directoraet so the user can't delete it by mistake, 
-        //because it's used to view the event entity when it's saved using the 
-        //event entity textbox
-        return $this->get_data('select * from committees where '
-                        . 'directorate_id = ? AND committee_id != ?', 'ii'
-                        , array(&$directorate_id1, &$directorate_id2));
+    public function committees_all_get($directorate_id1, $directorate_id2) {//here i get the directorate id twice to get all the committees belong to the same direcotrate, and to exclude the empty committee that belong to the same directoraet so the user can't delete it by mistake, because it's used to view the event entity when it's saved using the event entity textbox
+        return $this->get_data('select * from committees where directorate_id = ? AND committee_id != ?', 'ii', array(&$directorate_id1, &$directorate_id2));
     }
 
     public function committee_edit($committee_name, $committee_id) {

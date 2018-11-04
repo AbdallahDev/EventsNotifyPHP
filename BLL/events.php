@@ -60,24 +60,4 @@ class events extends my_db {
                 . 'where id = ?', 'ii', array(&$event_id, &$event_status));
     }
 
-    //this function to get all the events details to view them in the android
-    public function events_get_android() {
-        return $this->get_all_data('SELECT `time`, `subject`, `event_date`, '
-                        . 'committees.committee_name FROM `events`, committees '
-                        . 'WHERE events.committee_id = committees.committee_id '
-                        . 'ORDER BY `events`.`event_date` DESC, events.time ASC');
-    }
-
-    //this function get all the events related to specific committee
-    //and that depend on it's id
-    public function events_get_by_committee_android($committee_id) {
-        return $this->get_data('SELECT `time`, `subject`, `event_date`, '
-                        . 'events.event_insertion_date, committees.committee_name '
-                        . 'FROM `events`, committees '
-                        . 'WHERE events.committee_id = committees.committee_id '
-                        . 'AND events.committee_id = ? '
-                        . 'ORDER BY `events`.`event_date` DESC, events.time ASC', 'i'
-                        , array(&$committee_id));
-    }
-
 }

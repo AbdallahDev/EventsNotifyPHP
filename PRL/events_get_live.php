@@ -20,6 +20,7 @@ $rs_table_live_design = $table_live_design->table_live_design_get_live();
 $row_table_live_design = $rs_table_live_design->fetch_assoc();
 ?>
 
+
 <?php
 if ($rs->num_rows > 0) {
     if ((date('H:i') >= date('08:00')) && (date('H:i') <= $row_event_max_time['time'])) {
